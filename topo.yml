@@ -1,0 +1,53 @@
+name: evpn
+
+mgmt:
+  network: evpn
+  ipv4-subnet: 10.15.0.0/24
+
+topology:
+  kinds:
+    nokia_srlinux:
+      image: ghcr.io/nokia/srlinux
+  nodes:
+    peer1:
+      kind: nokia_srlinux
+      mgmt-ipv4: 10.15.0.10
+      startup-config: configs/peer1.cfg
+    peer2:
+      kind: nokia_srlinux
+      mgmt-ipv4: 10.15.0.11
+      startup-config: configs/peer2.cfg
+    pe1:
+      kind: nokia_srlinux
+      mgmt-ipv4: 10.15.0.12
+      startup-config: configs/pe1.cfg
+    pe2:
+      kind: nokia_srlinux
+      mgmt-ipv4: 10.15.0.13
+      startup-config: configs/pe2.cfg
+    pe3:
+      kind: nokia_srlinux
+      mgmt-ipv4: 10.15.0.14
+      startup-config: configs/pe3.cfg
+    pe4:
+      kind: nokia_srlinux
+      mgmt-ipv4: 10.15.0.15
+      startup-config: configs/pe4.cfg
+    p1:
+      kind: nokia_srlinux
+      mgmt-ipv4: 10.15.0.16
+      startup-config: configs/p1.cfg
+
+
+
+  links:
+    - endpoints: ["peer1:e1-1", "pe1:e1-1"]
+    - endpoints: ["peer1:e1-2", "pe2:e1-1"]
+    - endpoints: ["peer2:e1-1", "pe1:e1-2"]
+    - endpoints: ["peer2:e1-2", "pe2:e1-2"]
+    - endpoints: ["pe3:e1-1", "pe1:e1-3"]
+    - endpoints: ["pe3:e1-2", "pe2:e1-3"]
+    - endpoints: ["pe4:e1-1", "pe1:e1-4"]
+    - endpoints: ["pe4:e1-2", "pe2:e1-4"]
+    - endpoints: ["p1:e1-1", "pe3:e1-3"]
+    - endpoints: ["p1:e1-2", "pe4:e1-3"]

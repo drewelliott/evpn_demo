@@ -28,7 +28,7 @@ topology:
     pe3:
       kind: nokia_srlinux
       mgmt-ipv4: 10.15.0.14
-      startup-config: configs/pe3.cfg
+      #startup-config: configs/pe3.cfg
     pe4:
       kind: nokia_srlinux
       mgmt-ipv4: 10.15.0.15

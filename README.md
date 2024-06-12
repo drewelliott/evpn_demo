@@ -34,7 +34,7 @@ To run this demo, you only need to have a functioning [containerlab](https://con
 
 After you have installed [containerlab](https://containerlab.dev), clone this repo, cd into the `evpn_demo` directory and run the following command:
 
-> `sudo clab deploy -t topo.ym -c`
+> `sudo clab deploy -t topo.yml -c`
 
 This will launch the entire topology and preconfigure all of the nodes except for PE3 which is without config.
 
